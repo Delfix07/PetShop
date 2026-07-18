@@ -1,7 +1,7 @@
 import {Heading, Paragraph} from "../atoms";
 
 export default function ProductCard({
-    title, description, imgSource, prince, className = ""
+    title, description, imgSource, price, className = ""
 }){
     return(
         <article className={className}>
