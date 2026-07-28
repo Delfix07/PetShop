@@ -1,5 +1,5 @@
-import {router} from "express";
-import {createUser, deleteUser, deleteUser, getAllUsers, getOneUser, updateUser} from "../controllers/user/index";
+import { Router } from "express";
+import {createUser, deleteUser, deleteUser, getAllUsers, getOneUser, updateUser} from "../controllers/user/index.js";
 
 const user = Router()
 
@@ -15,6 +15,7 @@ user.get("/:id", async (req, res) => {
 
 user.put("/:id", async (req, res) => {
     const user = await updateUser(req.params.id, req.body)
+    res.sendStatus(200)
 })
 
 user.post("/", async (req, res) => {
@@ -23,8 +24,10 @@ user.post("/", async (req, res) => {
 })
 
 user.delete("/:id", async (req, res) => {
-    const deleteUser = await deleteUser (req.params.id)
-    res.send(deleteUser).status(200)
+    const deletedUser = await deleteUser (req.params.id)
+    res.send(deletedUser).status(200)
 })
+
+//Try, Catch?? ver tema de manejos de erores.
 
 export default user
