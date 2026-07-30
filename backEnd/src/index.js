@@ -1,3 +1,6 @@
+import dotenv from "dotenv";
+dotenv.config();
+
 import express from "express";
 import routes from "./routes/index";
 import mongoose from "mongoose";
@@ -5,7 +8,7 @@ import mongoose from "mongoose";
 const app = express()
 app.use(express.json())
 
-mongoose.connect("mongodb+srv://delfinaolie12_db_user:NGp59AjoZR1fTIOr@cluster0.47oktpm.mongodb.net/?appName=Cluster0/petShop")
+mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
         app.use("/", routes)
         app.listen(3000, () => {

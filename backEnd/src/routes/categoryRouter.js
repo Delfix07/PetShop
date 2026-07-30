@@ -3,4 +3,6 @@ import {createCategory, deleteCategory, editCategory, getAllCategories, getOneCa
 
 const category = Router()
 
+
+
 export default category
