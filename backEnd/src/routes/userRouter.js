@@ -20,12 +20,12 @@ user.put("/:id", async (req, res) => {
 
 user.post("/", async (req, res) => {
     const newUser = await createUser(req.body)
-    res.send(newUser).status(200)
+    res.status(200).send(newUser)
 })
 
 user.delete("/:id", async (req, res) => {
     const deletedUser = await deleteUser (req.params.id)
-    res.send(deletedUser).status(200)
+    res.status(200).send(deletedUser)
 })
 
 //Try, Catch?? ver tema de manejos de erores.

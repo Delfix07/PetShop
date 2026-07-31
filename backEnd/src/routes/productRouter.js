@@ -21,12 +21,12 @@ product.put("/:id", async (req,res) =>{
 
 product.post("/", async (req, res) =>{
     const newProduct = await createProduct(req.body)
-    res.send(newProduct).status(200)
+    res.status(200).send(newProduct)
 })
 
 product.delete("/:id", async (req, res) =>{
     const deletedProduct = await deleteProduct(req.params.id)
-    res.send(deletedProduct).status(200)
+    res.status(200).send(deletedProduct)
 })
 
 export default product

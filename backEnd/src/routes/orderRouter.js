@@ -20,12 +20,12 @@ order.put("/:id", async (req,res) =>{
 
 order.post("/", async (req,res)=>{
     const newOrder = await createOrder (req.body)
-    res.send(newOrder).status(200)
+    res.status(200).send(newOrder)
 })
 
 order.delete("/:id", async (req,res)=>{
     const deleteOrder = await cancellOrder (req.params.id)
-    res.send(deleteOrder).status(200)
+    res.status(200).send(deleteOrder)
 })
 
 export default order
