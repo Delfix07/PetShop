@@ -1,6 +1,10 @@
 import { Router } from "express";
-import {userRouter, productRouter, orderRouter, categoryRouter} from "../routes"
 import cors from "cors"
+
+import userRouter from "./userRouter.js"
+import productRouter from "./productRouter.js"
+import orderRouter from "./orderRouter.js" 
+import categoryRouter from "./categoryRouter.js"
 
 const router = Router()
 

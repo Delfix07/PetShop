@@ -1,4 +1,4 @@
-import User from "../../models/index"
+import {User} from "../../models/index.js"
 export default async function getUser(email){
     try{
         const findUserEmail = await User.findOne(email)

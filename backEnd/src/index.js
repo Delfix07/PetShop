@@ -2,13 +2,13 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import express from "express";
-import routes from "./routes/index";
+import routes from "./routes/index.js";
 import mongoose from "mongoose";
 
 const app = express()
 app.use(express.json())
 
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGO_URI)
     .then(() => {
         app.use("/", routes)
         app.listen(3000, () => {

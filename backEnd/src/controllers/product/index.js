@@ -1,7 +1,7 @@
-import createProduct from "./createProduct";
-import deleteProduct from "./deleteProduct";
-import editProduct from "./editProduct";
-import getAllProducts from "./getAllProducts";
-import getOneProduct from "./getOneProduct";
+import createProduct from "./createProduct.js";
+import deleteProduct from "./deleteProduct.js";
+import editProduct from "./editProduct.js";
+import getAllProducts from "./getAllProducts.js";
+import getOneProduct from "./getOneProduct.js";
 
 export {createProduct, deleteProduct, editProduct, getAllProducts, getOneProduct} 
