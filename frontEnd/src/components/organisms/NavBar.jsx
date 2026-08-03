@@ -1,15 +1,20 @@
 import { Link } from "react-router-dom";
+import SearchBar from "../molecules/SearchBar.jsx";
+import Burguer from "../molecules/Burguer.jsx";
 
 export default function NavBar(){
     return(
         <div className="navBar"> 
-            <link to="/">
+            <Link to="/">
                 <img id="logo" src="" alt="logo"/>
-            </link>
-    
-            <input className="search" type="text" placeholder="Search..." onChange={() => {}}></input>
-            <button className="user" onClick={() => {}} type="button"><img className="user" src="" alt=""/></button>
-            <button className="options" onClick={() => {}} type="button"><img className="options" src="" alt=""/></button>
+            </Link>
+        <SearchBar/>
+
+        <Link to="/cart">
+            <button className="cart" type="button">🛒</button>
+        </Link>
+        <Burguer/>
+
         </div>
     );
 }
