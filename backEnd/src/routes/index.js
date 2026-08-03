@@ -11,7 +11,7 @@ const router = Router()
 
 router.use(cors())
 
-router.use("/users", userRouter) 
+router.use("/user/register", userRouter) 
 router.use("/products", productRouter)
 router.use("/orders", orderRouter)
 router.use("/categories", categoryRouter)

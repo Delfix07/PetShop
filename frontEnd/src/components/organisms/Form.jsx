@@ -1,23 +1,24 @@
-import Heading from "../atoms";
-import InputLabel from "../molecules";
+import {Heading} from "../atoms/Index.js";
+import {InputLabel} from "../molecules/Index.js";
 
 export default function Form({
     formTitle= "form",
+    buttonText="Send",
     inputs= [],
     className= "",
     formSubmit=()=>{},
 }) {
     return (
-        <form className={className}>
-            <Heading size="h2" text={formTitle} onSubmit={onSubmit}/>
+        <form className={className} onSubmit={formSubmit}>
+            <Heading size="h2" text={formTitle}/>
             {inputs.length ? inputs.map((input)=>(
-                <inputLabel className={input.className}
-                    label={input.label}
-                    inputId={input.inputId}
-                    {...input}/>
+                <InputLabel
+                    key={input.inputId}
+                    {...input}
+                />
             ))
         :null}
-        <button type="submit">{formTitle}</button>
+        <button type="submit">{buttonText}</button>
         </form>
     );
 }

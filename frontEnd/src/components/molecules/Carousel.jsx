@@ -1,4 +1,4 @@
-import Carousel from 'react-bootstrap/Carousel';
+import BsCarousel from 'react-bootstrap/Carousel';
 import CarouselItem from 'react-bootstrap/CarouselItem'
 
 export default function Carousel() {
