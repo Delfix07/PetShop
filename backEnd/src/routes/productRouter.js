@@ -5,9 +5,10 @@ import {createProduct, deleteProduct, editProduct, getAllProducts, getOneProduct
 const product = Router()
 
 product.get("/", async (req, res) => {
-    const products = await getAllProducts()
-    res.send(products) 
-})
+    const { search } = req.query;
+    const products = await getAllProducts(search);
+    res.json(products);
+});
 
 product.get("/:id", async (req, res) =>{
     const product = await getOneProduct(req.params.id)

@@ -10,6 +10,7 @@ export default function Register (){
         surname:"",
         email:"",
         password:"",
+        repeatPassword:"",
         phoneNumber:"",
         country:"",
         city:""
@@ -19,6 +20,7 @@ export default function Register (){
         surname:"",
         email:"",
         password:"",
+        repeatPassword:"",
         phoneNumber:"",
         country:"",
         city:""
@@ -61,6 +63,7 @@ export default function Register (){
                 surname:"",
                 email:"",
                 password:"",
+                repeatPassword:"",
                 phoneNumber:"",
                 country:"",
                 city:""
@@ -70,6 +73,7 @@ export default function Register (){
                 surname:"",
                 email:"",
                 password:"",
+                repeatPassword:"",
                 phoneNumber:"",
                 country:"",
                 city:""
@@ -126,6 +130,17 @@ export default function Register (){
             value: form.password,
             onChange: handleChange,
             error: errors.password
+        },
+            
+        {
+           inputId: "repeatPassword",
+            label: "RepeatPassword",
+            type: "password",
+            name: "repeatPassword",
+            placeholder: "Repeat your password",
+            value: form.repeatPassword,
+            onChange: handleChange,
+            error: errors.repeatPassword 
         },
 
         {
