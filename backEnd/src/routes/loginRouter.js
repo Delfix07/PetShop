@@ -2,20 +2,30 @@ import { Router } from "express";
 import {loginUser} from "../controllers/logIn/index.js";
 
 
-const user = Router();
+const login = Router();
 
-user.post("/", async (req, res) => {
+login.post("/", async (req, res) => {
     try{
         const {email, password} = req.body
-        const loggedUser = await loginUser(email, password)
-        if (!loggedUser) {
-            return res.status(401).send("Credentials are incorrect")
+        const user = await loginUser(email)
+        if (!user) {
+            return res.status(404).json("User not found")
         }
-        return res.status(200).json(loggedUser)
+        if (user.password !== password) {
+            return res.status(401).json({
+                message: "Incorrect password"
+            });
+        }
+        return res.status(200).json(
+            {message: "Login successful", user})
     }catch (error){
-    res.status(500).send("Internal server error")
+    console.error(error);
+
+    return res.status(500).json({
+        message: "Internal server error"
+    });
 }
 })
 
-export default user
+export default login
 
