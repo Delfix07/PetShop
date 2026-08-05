@@ -45,6 +45,7 @@ export default function Register (){
             newErrors.surname !== "" ||
             newErrors.email !== "" ||
             newErrors.password !== "" ||
+            newErrors.repeatPassword !== "" ||
             newErrors.phoneNumber !== "" ||
             newErrors.country !== "" ||
             newErrors.city !== "";
@@ -52,9 +53,10 @@ export default function Register (){
         if (hasErrors){
             setMessage("There are errors in the form")
             return
-        }
+        }   
+        const { repeatPassword, ...userData } = form;
         try {
-            const response = await axios.post("http://localhost:3000/user/register", form)
+            await axios.post("http://localhost:3000/user/register", userData)
             
             setMessage("Registered correctly")
             

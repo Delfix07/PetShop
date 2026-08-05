@@ -3,7 +3,7 @@ export default function validateRegister(form){
 
     const regexName = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]*$/;
     const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    const regexPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&.#_+-])[A-Za-z\d@$!%*?&.#_+-]{8,}$/;
     const regexPhone = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/;
 
     const errors={
@@ -33,6 +33,12 @@ export default function validateRegister(form){
         ? "This input must contain something" 
         : !regexPassword.test(form.password) 
         ? "At least 8 characters, one uppercase letter, one lowercase letter, one number, and one special character is required" 
+        : "",
+    repeatPassword:
+        form.password.length === 0 
+        ? "This input must contain something" 
+        : form.repeatPassword !== form.password
+        ? "Passwords do not match" 
         : "",
     phoneNumber:
         form.phoneNumber.length === 0 
