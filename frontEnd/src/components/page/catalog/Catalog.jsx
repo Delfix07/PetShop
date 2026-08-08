@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios"
-import ProductCard from "../../../components/molecules/ProductCard.jsx"
-import CategoryFilter from "../../organisms/categoryFiler.jsx";
+import {ProductCard} from "../../../components/molecules/Index.js"
+import {CategoryFilter} from "../../organisms/index.js";
 
 
 export default function Catalog (){

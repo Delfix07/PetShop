@@ -1,6 +1,8 @@
 import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../redux/slices/cartSlice.js";
 
 import { Heading } from "../atoms";
 import {Paragraph} from "../atoms";
@@ -8,6 +10,7 @@ import {Paragraph} from "../atoms";
 export default function ProductDetails (){
     const { id } = useParams()
     const [product, setProduct] = useState(null)
+    const dispatch = useDispatch();
 
     const getProduct = async () => {
     try {
@@ -27,6 +30,7 @@ export default function ProductDetails (){
 
     if (!product) {
         return <p>Loading...</p>;}
+
     return (
         <div className="product-detail">
             <img
@@ -38,9 +42,7 @@ export default function ProductDetails (){
             <p>Brand: {product.brand}</p>
             <p>Category: {product.category}</p>
             <p>Stock: {product.stock}</p>
-            <Button >Add to cart</Button>
+            <button onClick={() => dispatch(addToCart(product))} disabled={product.stock === 0}>Add to cart</button>
         </div>
-    );
-
+    )
 } 
- //onClick={} Agregar al button una vez este listo el cart

@@ -1,17 +1,19 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import NavBar from "../../organisms/NavBar.jsx";
-import ProductCard from "../../molecules/ProductCard.jsx";
+import {NavBar} from "../../organisms/index.js";
+import {ProductCard} from "../../molecules/Index.js";
 
 export default function Home(){
-    const [products, setProducts] = useState([]);
+    const [products, setProducts] = useState([])
+    const [loading, setLoading] = useState(true)
 
     const getProducts = async () => {
         try {
-            const response = await axios.get("http://localhost:3000/products");
-            setProducts(response.data);
+            setLoading(true)
+            const response = await axios.get("http://localhost:3000/products")
+            setProducts(response.data)
         } catch (error) {
-            console.error(error);
+            console.error(error)
         }
     };
 
@@ -23,10 +25,12 @@ export default function Home(){
                     params: {search: text}
                 }
             );
-            setProducts(response.data);
+            setProducts(response.data)
         } catch (error) {
-            console.error(error);
-        }
+            console.error(error)
+        } finally {
+      setLoading(false);
+    }
     };
 
     useEffect(() => { getProducts(); }, []);
@@ -34,13 +38,21 @@ export default function Home(){
     return (
         <>
             <NavBar onSearch={handleSearch} />
-
-            {products.map(product => (
-                <ProductCard
-                    key={product._id}
-                    product={product}
-                />
-            ))}
+            <main className="productGrid">
+                {loading ? (
+                    <p>Loading products...</p>
+                ) : products.length === 0 ? (
+                    <p>No products found.</p>
+                ) : (
+                    products.map((product) => (
+                        <ProductCard
+                            key={product._id}
+                            {...product} 
+                        />
+                    ))
+                )}
+            </main>
         </>
-    );
+    )
 }
+

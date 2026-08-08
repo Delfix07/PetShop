@@ -1,13 +1,12 @@
 import { Link } from "react-router-dom";
-import SearchBar from "../molecules/SearchBar.jsx";
-import Hamburguer from "../molecules/Hamburguer.jsx";
+import {SearchBar, Hamburguer} from "../molecules/Index.js";
 import {FaShoppingCart, FaBars, FaSearch} from "react-icons/fa";
 
 export default function NavBar({onSearch}){
     return(
         <div className="navBar"> 
             <Link to="/">
-                <img id="logo" src="" alt="logo"/>
+                <img id="logo" src="logoUrl" alt="logo"/>
             </Link>
         <SearchBar onSearch={onSearch}/>
 

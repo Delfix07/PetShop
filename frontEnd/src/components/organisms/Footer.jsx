@@ -1,4 +1,4 @@
-import { Paragraph } from "../atoms";
+import { Paragraph } from "../atoms/Index.js";
 
 export default function footer(imgSource, copyright){
     return (

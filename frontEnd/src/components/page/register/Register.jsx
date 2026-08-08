@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Form from "../../organisms/Form";
+import {Form} from "../../organisms/index.js";
 import validateRegister from "../../utils/ValidateRegister.js";
 import "./Register.css"; 
 import axios from "axios";

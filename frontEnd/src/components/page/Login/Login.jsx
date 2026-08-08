@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Form from "../../organisms/Form";
+import {Form} from "../../organisms/index.js";
 import validateLogin from "../../utils/ValidateLogin.js"
 import axios from "axios";
 import { useDispatch } from "react-redux";
