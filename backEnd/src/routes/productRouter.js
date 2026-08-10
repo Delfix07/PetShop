@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {createProduct, deleteProduct, editProduct, getAllProducts, getOneProduct } from "../controllers/product/index.js";
+import {createProduct, deleteProduct, editProduct, getAllProducts, getOneProduct, getProductsBySeller } from "../controllers/product/index.js";
 
 
 const product = Router()
@@ -8,6 +8,11 @@ product.get("/", async (req, res) => {
     const { search } = req.query;
     const products = await getAllProducts(search);
     res.json(products);
+});
+
+product.get("/seller/:sellerId", async (req, res) => {
+    const products = await getProductsBySeller(req.params.sellerId);
+    res.send(products);
 });
 
 product.get("/:id", async (req, res) =>{
@@ -29,5 +34,7 @@ product.delete("/:id", async (req, res) =>{
     const deletedProduct = await deleteProduct(req.params.id)
     res.status(200).send(deletedProduct)
 })
+
+
 
 export default product

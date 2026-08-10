@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {loginUser} from "../controllers/logIn/index.js";
+import {getUser} from "../controllers/logIn/index.js";
 
 
 const login = Router();
@@ -7,7 +7,7 @@ const login = Router();
 login.post("/", async (req, res) => {
     try{
         const {email, password} = req.body
-        const user = await loginUser(email)
+        const user = await getUser(email)
         if (!user) {
             return res.status(404).json("User not found")
         }
@@ -16,8 +16,15 @@ login.post("/", async (req, res) => {
                 message: "Incorrect password"
             });
         }
-        return res.status(200).json(
-            {message: "Login successful", user})
+        res.status(200).json({
+            message: "Login successful",
+            user: {
+                id: user._id,
+                name: user.name,
+                email: user.email,
+                role: user.role
+            }
+        });
     }catch (error){
     console.error(error);
 

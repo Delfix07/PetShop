@@ -30,7 +30,12 @@ const userSchema = new mongoose.Schema({
     city:{
         type:String,
         required: true
-    }  
+    },
+    role:{
+        type: String,
+        enum: ["user", "admin", "seller"],
+        default: "user"
+    }
 });
 
 const User = mongoose.model("Users", userSchema)
