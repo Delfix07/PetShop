@@ -7,12 +7,12 @@ const product = Router()
 product.get("/", async (req, res) => {
     const { search } = req.query;
     const products = await getAllProducts(search);
-    res.json(products);
+    res.json(products)
 });
 
 product.get("/seller/:sellerId", async (req, res) => {
     const products = await getProductsBySeller(req.params.sellerId);
-    res.send(products);
+    res.send(products)
 });
 
 product.get("/:id", async (req, res) =>{
@@ -21,8 +21,8 @@ product.get("/:id", async (req, res) =>{
 })
 
 product.put("/:id", async (req,res) =>{
-    const product = await editProduct (req.params.id, req.body)
-    res.sendStatus(200)
+    const updatedProduct = await editProduct (req.params.id, req.body)
+    res.status(200).send(updatedProduct)
 })
 
 product.post("/", async (req, res) =>{

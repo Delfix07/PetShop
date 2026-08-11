@@ -7,6 +7,9 @@ import Login from "./components/page/Login/Login.jsx";
 import Catalog from './components/page/catalog/Catalog.jsx';
 import ProductDetails from './components/molecules/ProductDetails.jsx';
 import Cart from './components/page/cart/cart.jsx';
+import Admin from './components/page/admin/Admin.jsx';
+import Seller from './components/page/seller/Seller.jsx';
+import Checkout from "./components/page/checkout/Checkout.jsx";
 
 function App(){
     return(
@@ -17,6 +20,9 @@ function App(){
         <Route path="/products" element={<Catalog/>}/>
         <Route path="/products/:id" element={<ProductDetails/>}/>
         <Route path="/cart" element={<Cart/>}/>
+        <Route path="/checkout" element={<Checkout/>}/>
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/seller" element={<Seller />} />
     </Routes>
     )
 

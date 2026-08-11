@@ -4,11 +4,12 @@ import validateLogin from "../../utils/ValidateLogin.js"
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import {loginSuccess, logout} from "../../../redux/slices/userSlice.js"
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Login(){
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const location = useLocation();
     const [form, setForm] = useState({
         email: "",
         password: ""
@@ -44,16 +45,18 @@ export default function Login(){
             const response = await axios.post("http://localhost:3000/login", form)
             dispatch(loginSuccess(response.data.user));
             
-            if (response.data.user.role === "user") {
-                navigate("/")
-            }
-
-            if (response.data.user.role === "admin") {
-                navigate("/admin")
-            }
-
-            if (response.data.user.role === "seller") {
-                navigate("/seller")
+            if (location.state?.from) {
+                navigate(location.state.from)
+            } else {
+                if (response.data.user.role === "user") {
+                    navigate("/")
+                }
+                if (response.data.user.role === "admin") {
+                    navigate("/admin")
+                }
+                if (response.data.user.role === "seller") {
+                    navigate("/seller")
+                }
             }
             
             setMessage("Logged correctly")

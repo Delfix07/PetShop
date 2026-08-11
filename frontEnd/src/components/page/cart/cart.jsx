@@ -1,8 +1,10 @@
 import { useSelector } from "react-redux";
 import { Heading } from "../../atoms/Index.js";
 import {CartItem} from "../../molecules/Index.js";
+import { useNavigate } from "react-router-dom";
 
 export default function Cart(){
+    const navigate = useNavigate()
     const cart = useSelector(state => state.cart.items)
     const total = cart.reduce(
     (sum, item) => sum + item.price * item.quantity, 0)
@@ -18,6 +20,10 @@ export default function Cart(){
                 <CartItem key={item._id} item={item}/>
             ))}
             <Heading size="h3" text={`Total: $${total}`}/>
+            <button
+                type="button"
+                onClick={() => navigate("/checkout")}
+            >Checkout</button>
         </div>
     )
 }
