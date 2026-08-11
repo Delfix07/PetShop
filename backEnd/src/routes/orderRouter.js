@@ -1,10 +1,15 @@
 import { Router } from "express";
-import {cancellOrder, createOrder, getAllOrders, getOneOrder, updateOrder} from "../controllers/order/index.js";
+import {cancellOrder, createOrder, getAllOrders, getOneOrder, updateOrder, getOrdersByUser} from "../controllers/order/index.js";
 
 const order = Router()
 
 order.get("/", async (req, res) => {
     const orders = await getAllOrders()
+    res.send(orders)
+})
+
+order.get("/user/:id", async (req, res) => {
+    const orders = await getOrdersByUser(req.params.id)
     res.send(orders)
 })
 

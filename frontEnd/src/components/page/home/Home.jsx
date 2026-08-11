@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import {NavBar} from "../../organisms/index.js";
-import {ProductCard} from "../../molecules/Index.js";
+import {ProductCard, HomeCarousel} from "../../molecules/Index.js";
 
 export default function Home(){
     const [products, setProducts] = useState([])
@@ -38,6 +38,7 @@ export default function Home(){
     return (
         <>
             <NavBar onSearch={handleSearch} />
+            <HomeCarousel/>
             <main className="productGrid">
                 {loading ? (
                     <p>Loading products...</p>

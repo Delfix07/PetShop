@@ -10,6 +10,8 @@ import Cart from './components/page/cart/cart.jsx';
 import Admin from './components/page/admin/Admin.jsx';
 import Seller from './components/page/seller/Seller.jsx';
 import Checkout from "./components/page/checkout/Checkout.jsx";
+import Orders from './components/page/orders/Orders.jsx';
+import ProtectedRoute from './components/ProtectedRoute.jsx';
 
 function App(){
     return(
@@ -21,10 +23,18 @@ function App(){
         <Route path="/products/:id" element={<ProductDetails/>}/>
         <Route path="/cart" element={<Cart/>}/>
         <Route path="/checkout" element={<Checkout/>}/>
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/seller" element={<Seller />} />
+        <Route path="/admin" element={
+            <ProtectedRoute role="admin">
+                <Admin />
+            </ProtectedRoute>
+        }/>
+        <Route path="/seller" element={
+            <ProtectedRoute role="seller">
+                <Seller />
+            </ProtectedRoute>
+        }/>
+        <Route path='/orders' element={<Orders/>}/>
     </Routes>
     )
-
 }
 export default App
