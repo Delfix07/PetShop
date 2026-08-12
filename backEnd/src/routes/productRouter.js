@@ -20,14 +20,33 @@ product.get("/:id", async (req, res) =>{
     res.send(product)
 })
 
-product.put("/:id", async (req,res) =>{
-    const updatedProduct = await editProduct (req.params.id, req.body)
-    res.status(200).send(updatedProduct)
+product.put("/:id", async (req, res) => {
+    try {
+        const updatedProduct = await editProduct(
+            req.params.id,
+            req.body
+        )
+        res.status(200).json(updatedProduct)
+    } catch (error) {
+        console.error(error)
+        res.status(400).json({
+            message: "Error updating product",
+            error: error.message
+        })
+    }
 })
 
-product.post("/", async (req, res) =>{
-    const newProduct = await createProduct(req.body)
-    res.status(200).send(newProduct)
+product.post("/", async (req, res) => {
+    try {
+        const newProduct = await createProduct(req.body)
+        res.status(200).json(newProduct)
+    } catch (error) {
+        console.error(error)
+        res.status(400).json({
+            message: "Error creating product",
+            error: error.message
+        })
+    }
 })
 
 product.delete("/:id", async (req, res) =>{

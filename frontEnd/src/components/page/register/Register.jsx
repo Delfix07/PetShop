@@ -3,6 +3,7 @@ import {Form} from "../../organisms/index.js";
 import validateRegister from "../../utils/ValidateRegister.js";
 import "./Register.css"; 
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 export default function Register (){
     const [form, setForm] = useState({
@@ -26,9 +27,10 @@ export default function Register (){
         city:""
     })
     const [message, setMessage] = useState("")
+    const navigate = useNavigate()
 
     function handleChange(event){
-        const {name, value} = event.target;
+        const {name, value} = event.target
         setForm({
             ...form,
             [name]: value
@@ -37,8 +39,8 @@ export default function Register (){
 
     async function handleSubmit(event){
         event.preventDefault()
-        const newErrors = validateRegister(form);
-        setErrors(newErrors);
+        const newErrors = validateRegister(form)
+        setErrors(newErrors)
 
         const hasErrors =
             newErrors.name !== "" ||
@@ -48,44 +50,23 @@ export default function Register (){
             newErrors.repeatPassword !== "" ||
             newErrors.phoneNumber !== "" ||
             newErrors.country !== "" ||
-            newErrors.city !== "";
+            newErrors.city !== ""
 
         if (hasErrors){
             setMessage("There are errors in the form")
             return
         }   
-        const { repeatPassword, ...userData } = form;
+        const { repeatPassword, ...userData } = form
         try {
             await axios.post("http://localhost:3000/user/register", userData)
-            
-            setMessage("Registered correctly")
-            
-            setForm({
-                name:"",
-                surname:"",
-                email:"",
-                password:"",
-                repeatPassword:"",
-                phoneNumber:"",
-                country:"",
-                city:""
-            })
-            setErrors({
-                name:"",
-                surname:"",
-                email:"",
-                password:"",
-                repeatPassword:"",
-                phoneNumber:"",
-                country:"",
-                city:""
-            })
+            navigate("/")
+
         }catch (error){
             console.error(error)
             if(error.response){
-                setMessage(error.response.data);
+                setMessage(error.response.data)
             }else{
-                setMessage("Server connection failed");
+                setMessage("Server connection failed")
             }
 
         }

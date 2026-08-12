@@ -18,14 +18,33 @@ order.get("/:id", async (req,res) =>{
     res.send(order)
 })
 
-order.put("/:id", async (req,res) =>{
-    const order = await updateOrder(req.params.id, req.body)
-    res.sendStatus(200)
+order.put("/:id", async (req, res) => {
+    try {
+        const updatedOrder = await updateOrder(
+            req.params.id,
+            req.body
+        )
+        res.status(200).json(updatedOrder)
+    } catch (error) {
+        console.error(error)
+        res.status(400).json({
+            message: "Error updating order",
+            error: error.message
+        })
+    }
 })
 
-order.post("/", async (req,res)=>{
-    const newOrder = await createOrder (req.body)
-    res.status(200).send(newOrder)
+order.post("/", async (req, res) => {
+    try {
+        const newOrder = await createOrder(req.body)
+        res.status(201).json(newOrder)
+    } catch (error) {
+        console.error(error)
+        res.status(400).json({
+            message: "Error creating order",
+            error: error.message
+        })
+    }
 })
 
 order.delete("/:id", async (req,res)=>{

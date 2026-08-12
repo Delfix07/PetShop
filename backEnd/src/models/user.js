@@ -1,43 +1,53 @@
 import mongoose from "mongoose";
+
 const userSchema = new mongoose.Schema({
+
     name: {
         type: String,
-        required:true
+        required: true,
+        trim: true,
+        minlength: 2
     },
-    surname:{
+    surname: {
         type: String,
-        required:true
+        required: true,
+        trim: true,
+        minlength: 2
     },
     email: {
         type: String,
-        required:true,
-        unique:true
+        required: true,
+        unique: true,
+        trim: true,
+        lowercase: true,
+        match: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
     },
     password: {
         type: String,
-        required:true,
-        minLength: 8,
-        maxLength: 20
+        required: true,
+        minlength: 8,
+        maxlength: 20
     },
-    phoneNumber:{
+    phoneNumber: {
         type: Number,
-        required: true
+        required: true,
+        min: 0
     },
-    country:{
-        type:String,
-        required: true
+    country: {
+        type: String,
+        required: true,
+        trim: true
     },
-    city:{
-        type:String,
-        required: true
+    city: {
+        type: String,
+        required: true,
+        trim: true
     },
-    role:{
+    role: {
         type: String,
         enum: ["user", "admin", "seller"],
         default: "user"
     }
-});
-
+})
 const User = mongoose.model("Users", userSchema)
-
 export default User;

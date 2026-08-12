@@ -10,16 +10,16 @@ export default function HomeCarousel() {
   return (
     <Carousel>
       <Carousel.Item>
-        <img src={promo} alt="promos"/>
+        <img src={promo} alt="promos" width="100%"/>
       </Carousel.Item>
       <Carousel.Item>
-        <img src={ingresos} alt="nuevos ingresos"/>
+        <img src={ingresos} alt="nuevos ingresos" width="100%"/>
       </Carousel.Item>
       <Carousel.Item>
-        <img src={nuevosIngresos} alt="nuevos ingresos"/>
+        <img src={nuevosIngresos} alt="nuevos ingresos" width="100%"/>
       </Carousel.Item>
       <Carousel.Item>
-        <img src={info} alt="ubicacion del local"/>
+        <img src={info} alt="ubicacion del local" width="100%"/>
       </Carousel.Item>
     </Carousel>
   )

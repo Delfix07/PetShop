@@ -7,7 +7,7 @@ export default function NavBar({onSearch}){
     return(
         <div className="navBar"> 
             <Link to="/">
-                <img id="logo" src={logo} alt="logo"/>
+                <img id="logo" src={logo} alt="logo" height="60"/>
             </Link>
         <SearchBar onSearch={onSearch}/>
 

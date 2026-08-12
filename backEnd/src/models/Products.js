@@ -1,42 +1,59 @@
 import mongoose from "mongoose";
+
 const productSchema = new mongoose.Schema({
-    name:{
+
+    name: {
         type: String,
-        required: true
+        required: true,
+        trim: true,
+        minlength: 2
     },
-    description:{
+    description: {
         type: String,
-        required: true
+        required: true,
+        trim: true,
+        minlength: 5
     },
-    price:{
+    price: {
         type: Number,
-        required: true
+        required: true,
+        min: 0
     },
-    petType:{
+    petType: {
         type: [String],
-        required: true
+        required: true,
+        validate: {
+            validator: function (value) {
+                return value.length > 0
+            },
+            message: "At least one pet type is required"
+        }
     },
-    stock:{
-        type:Number,
+    stock: {
+        type: Number,
         default: 0,
+        min: 0
     },
-    category:{
+    category: {
         type: String,
-        required: true
+        required: true,
+        trim: true
     },
-    brand:{
-        type:String,
-        required: true
+    brand: {
+        type: String,
+        required: true,
+        trim: true
     },
-    image:{
-        type: String
+    image: {
+        type: String,
+        trim: true
     },
     seller: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Users",
         required: true
     }
-});
+})
 
 const Products = mongoose.model("Products", productSchema)
 

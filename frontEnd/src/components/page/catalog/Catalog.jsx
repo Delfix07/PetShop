@@ -55,15 +55,16 @@ export default function Catalog (){
             />
 
         <div className="catalog">
-            {products.map(product => (
-                <ProductCard
-                    key={product._id}
-                    title={product.name}
-                    description={product.description}
-                    imgSource={product.image}
-                    price={product.price}
-                />
-            ))}
+            {filteredProducts.map(product => (
+        <ProductCard
+            key={product._id}
+            _id={product._id}
+            name={product.name}
+            description={product.description}
+            image={product.image}
+            price={product.price}
+        />
+        ))}
         </div> 
     </div>
 );
