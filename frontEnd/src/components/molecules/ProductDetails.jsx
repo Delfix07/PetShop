@@ -3,9 +3,10 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../../redux/slices/cartSlice.js";
-
 import { Heading } from "../atoms";
 import {Paragraph} from "../atoms";
+import {ProductCarousel} from "./Index.js"
+import "./ProductDetails.css";
 
 export default function ProductDetails (){
     const { id } = useParams()
@@ -32,10 +33,11 @@ export default function ProductDetails (){
         return <p>Loading...</p>;}
 
     return (
-        <div className="product-detail">
-            <img
-                src={product.image}
-                alt={product.name}/>
+        <div className="productDetail">
+            <ProductCarousel
+                images={product.image}
+                productName={product.name}
+            />
             <Heading size="h1" text={product.name} />
             <Paragraph text={product.description} />
             <Heading size="h2" text={`$${product.price}`} />

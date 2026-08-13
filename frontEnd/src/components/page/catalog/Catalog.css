@@ -1,0 +1,20 @@
+.catalogHeader {
+    margin-bottom: 25px;
+}
+.catalogHeader h1 {
+    margin: 0 0 6px;
+
+    color: #263238;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+}
+.catalogHeader p {
+    margin: 0;
+
+    color: #7B8588;
+
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+}

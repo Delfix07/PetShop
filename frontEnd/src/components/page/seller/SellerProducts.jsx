@@ -12,14 +12,14 @@ export default function Products() {
     const [products, setProducts] = useState([])
     const [editId, setEditId] = useState(null)
     const [newProduct, setNewProduct] = useState({
-        name: "",
-        description: "",
-        price: "",
-        petType: [],
-        stock: 0,
-        category: "",
-        brand: "",
-        image: ""
+    name: "",
+    description: "",
+    price: "",
+    petType: [],
+    stock: 0,
+    category: "",
+    brand: "",
+    image: [""]
     })
     const [error, setError] = useState("")
     const [showForm, setShowForm] = useState(false)
@@ -78,7 +78,7 @@ export default function Products() {
                 stock: 0,
                 category: "",
                 brand: "",
-                image: ""
+                image: [""]
             })
         } catch (error) {
             console.error(error)
@@ -104,17 +104,17 @@ export default function Products() {
     }
 
     function resetForm() {
-        setEditId(null)
-        setNewProduct({
-            name: "",
-            description: "",
-            price: "",
-            petType: [],
-            stock: 0,
-            category: "",
-            brand: "",
-            image: ""
-        })
+    setEditId(null)
+    setNewProduct({
+        name: "",
+        description: "",
+        price: "",
+        petType: [],
+        stock: 0,
+        category: "",
+        brand: "",
+        image: [""]
+    })
     }
 
     return (

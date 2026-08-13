@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { FaShoppingCart, FaBars, FaSearch } from "react-icons/fa";
 import { FaUser, FaBoxOpen, FaSignOutAlt, FaSignInAlt, FaUserPlus } from "react-icons/fa";
 import { logout } from "../../redux/slices/userSlice";
+import "./Hamburguer.css"
 
 
 export default function Hamburguer() {
@@ -14,7 +15,7 @@ export default function Hamburguer() {
     const dispatch = useDispatch()
 
     return (
-        <>
+        <div className="hamburgerContainer">
             <button
                 className="menuButton"
                 onClick={() => setOpen(!open)}
@@ -60,6 +61,6 @@ export default function Hamburguer() {
                     )}
                 </div>
             )}
-        </>
+        </div>
     )
 }

@@ -5,5 +5,6 @@ import Hamburguer from "./Hamburguer";
 import SearchBar from "./SearchBar";
 import ProductDetails from "./ProductDetails";
 import CartItem from "./CartItem";
+import ProductCarousel from "./ProductCarousel";
 
-export {HomeCarousel, InputLabel, ProductCard, Hamburguer, SearchBar, ProductDetails, CartItem}
+export {HomeCarousel, InputLabel, ProductCard, Hamburguer, SearchBar, ProductDetails, CartItem, ProductCarousel}

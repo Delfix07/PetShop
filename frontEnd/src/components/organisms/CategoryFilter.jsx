@@ -1,3 +1,5 @@
+    import "./CategoryFilter.css"
+    
     export default function CategoryFilter({
     categories,
     selectedCategory,
@@ -6,9 +8,8 @@
 
      return (
 
-        <div className="category-filter">
+        <div className="categoryFilter">
             <button onClick={() => setSelectedCategory("All")}>All</button>
-
             {categories.map(category => (
                 <button
                     key={category._id}
@@ -16,9 +17,6 @@
                     {category.name}
                 </button>
             ))}
-
         </div>
-
-    );
-
+    )
 }

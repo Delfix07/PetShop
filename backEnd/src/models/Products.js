@@ -45,8 +45,8 @@ const productSchema = new mongoose.Schema({
         trim: true
     },
     image: {
-        type: String,
-        trim: true
+    type: [String],
+    required: true
     },
     seller: {
         type: mongoose.Schema.Types.ObjectId,

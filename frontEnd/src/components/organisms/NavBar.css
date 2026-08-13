@@ -1,0 +1,114 @@
+.navBar {
+    width: 100%;
+    height: 78px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    background-color: #FFFDF8;
+    border-bottom: 1px solid #EEF1F0;
+    box-sizing: border-box;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navBar > a:first-child {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+#logo {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+}
+
+#logo:hover {
+    transform: scale(1.04);
+}
+
+.navBar > .searchBar {
+    flex: 1;
+    max-width: 500px;
+    margin: 0 40px;
+}
+
+.navBar .cart {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 12px;
+    background-color: transparent;
+    color: #263238;
+    font-size: 20px;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.navBar .cart:hover {
+    background-color: #FFF0D2;
+    color: #D96907;
+    transform: translateY(-1px);
+}
+
+.navBar .cart:active {
+    transform: scale(0.95);
+}
+
+.navBar > :last-child {
+    margin-left: 10px;
+}
+
+@media (max-width: 768px) {
+
+    .navBar {
+        height: 70px;
+        padding: 0 20px;
+    }
+
+    #logo {
+        height: 50px;
+    }
+
+    .navBar > .searchBar {
+        margin: 0 15px;
+        max-width: none;
+    }
+
+    .navBar .cart {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+    }
+}
+
+
+@media (max-width: 550px) {
+
+    .navBar {
+        padding: 0 15px;
+    }
+
+    #logo {
+        height: 45px;
+    }
+
+    .navBar > .searchBar {
+        margin: 0 8px;
+    }
+
+    .navBar .cart {
+        width: 36px;
+        height: 36px;
+        font-size: 17px;
+    }
+}

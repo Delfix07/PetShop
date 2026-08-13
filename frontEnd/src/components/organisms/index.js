@@ -1,4 +1,4 @@
-import CategoryFilter from "./categoryFiler";
+import CategoryFilter from "./categoryFilter";
 import Footer from "./Footer";
 import Form from "./Form";
 import NavBar from "./NavBar";

@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import {SearchBar, Hamburguer} from "../molecules/Index.js";
-import {FaShoppingCart, FaBars, FaSearch} from "react-icons/fa";
+import {FaShoppingCart} from "react-icons/fa";
 import logo from "../../assets/logo.png";
-
+import "./NavBar.css"
 export default function NavBar({onSearch}){
     return(
         <div className="navBar"> 

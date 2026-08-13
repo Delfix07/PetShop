@@ -32,6 +32,8 @@ export default function ProductForm({
             petType: selectedPetTypes
         })
     }
+    const currentPetTypes = newProduct.petType || [];
+
 
     return (
         <form onSubmit={onSubmit}>
@@ -64,13 +66,12 @@ export default function ProductForm({
                 id="petType"
                 name="petType"
                 multiple
-                value={newProduct.petType}
                 onChange={handlePetTypeChange}
             >
-                <option value="dog">Dog</option>
-                <option value="cat">Cat</option>
-                <option value="fish">Fish</option>
-                <option value="other">Other</option>
+                <option option value="dog" selected={currentPetTypes.includes("dog")}>Dog</option>
+                <option value="cat" selected={currentPetTypes.includes("cat")}>Cat</option>
+                <option value="fish" selected={currentPetTypes.includes("fish")}>Fish</option>
+                <option value="other" selected={currentPetTypes.includes("other")}>Other</option>
             </select>
             <label htmlFor="stock">Stock</label>
             <input
@@ -98,13 +99,47 @@ export default function ProductForm({
                 onChange={handleChange}
             />
             <label htmlFor="image">Image URL</label>
-            <input
-                type="text"
-                id="image"
-                name="image"
-                value={newProduct.image}
-                onChange={handleChange}
-            />
+            <label>Images</label>
+            {newProduct.image.map((image, index) => (
+                <div key={index}>
+                    <input
+                        type="text"
+                        value={image}
+                        placeholder={`Image ${index + 1} URL`}
+                        onChange={(event) => {
+                            const newImages = [...newProduct.image]
+                            newImages[index] = event.target.value
+                            setNewProduct({
+                                ...newProduct,
+                                image: newImages
+                            })
+                        }}
+                    />
+                    {newProduct.image.length > 1 && (
+                        <button
+                            type="button"
+                            onClick={() => {
+                                const newImages = newProduct.image.filter(
+                                    (_, imageIndex) => imageIndex !== index
+                                )
+                                setNewProduct({
+                                    ...newProduct,
+                                    image: newImages
+                                })
+                            }}
+                        >Remove</button>
+                    )}
+                </div>
+            ))}
+            <button
+                type="button"
+                onClick={() => {
+                    setNewProduct({
+                        ...newProduct,
+                        image: [...newProduct.image, ""]
+                    })
+                }}
+            >Add image</button>
             <button type="submit">{editId ? "Edit Product" : "Create Product"}</button>
             <button
                 type="button"
@@ -117,7 +152,7 @@ export default function ProductForm({
                         stock: 0,
                         category: "",
                         brand: "",
-                        image: ""
+                        image: [""]
                     })
                     onCancel()
                 }}

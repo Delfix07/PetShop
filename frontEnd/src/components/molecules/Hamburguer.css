@@ -1,0 +1,135 @@
+.hamburgerContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.menuButton {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    border-radius: 12px;
+    background-color: transparent;
+    color: #263238;
+    font-size: 21px;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.menuButton:hover {
+    background-color: #E8F4E6;
+    color: #4CA338;
+    transform: translateY(-1px);
+}
+.menuButton:active {
+    transform: scale(0.95);
+}
+
+.menu {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    width: 190px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFFFF;
+    border: 1px solid #EEF1F0;
+    border-radius: 14px;
+    box-shadow:
+        0 8px 25px rgba(38, 50, 56, 0.12);
+    z-index: 1001;
+    animation: menuAppear 0.15s ease-out;
+}
+
+.menu a,
+.menu button {
+    width: 100%;
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 12px;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 10px;
+    background-color: transparent;
+    color: #263238;
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.menu a svg,
+.menu button svg {
+    width: 16px;
+    min-width: 16px;
+    color: #4CA338;
+}
+
+.menu a:hover,
+.menu button:hover {
+    background-color: #F5F8F6;
+    color: #4CA338;
+}
+
+.menu button:last-child {
+    margin-top: 4px;
+    border-top: 1px solid #EEF1F0;
+    border-radius: 0;
+    padding-top: 8px;
+}
+
+.menu button:last-child svg {
+    color: #D96907;
+}
+
+.menu button:last-child:hover {
+    background-color: #FFF0D2;
+    color: #D96907;
+}
+
+@keyframes menuAppear {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .menuButton {
+        width: 40px;
+        height: 40px;
+        font-size: 19px;
+    }
+    .menu {
+        width: 180px;
+    }
+}
+
+@media (max-width: 550px) {
+    .menuButton {
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+    }
+    .menu {
+        right: -5px;
+        width: 170px;
+    }
+}
