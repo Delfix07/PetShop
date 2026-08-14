@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import "./Orders.css"
 
 export default function Orders() {
     const currentUser = useSelector(
@@ -27,22 +28,47 @@ export default function Orders() {
     }
 
     return (
-        <div>
-            <h1>My Orders</h1>
-            {error && <p>{error}</p>}
-            {orders.length === 0 ? (
-                <p>You haven't made any orders yet.</p>
-            ) : (
-                <div>
-                    {orders.map(order => (
-                        <div key={order._id}>
-                            <h3>Order: {order._id}</h3>
-                            <p> Products: {order.products.length}</p>
-                            <p>Total: ${order.finalPrice}</p>
-                        </div>
-                    ))}
-                </div>
+        <main className="ordersPage">
+            <header className="ordersHeader">
+                <h1>My Orders</h1>
+                <p>Check your purchase history</p>
+            </header>
+            {error && (
+                <p className="ordersError">{error}</p>
             )}
-        </div>
+            {orders.length === 0 ? (
+                <div className="ordersEmpty">
+                    <h2>No orders yet</h2>
+                    <p>You haven't made any orders yet.</p>
+                </div>
+            ) : (
+                <section className="ordersList">
+                    {orders.map(order => (
+                        <article
+                            className="orderCard"
+                            key={order._id}
+                        >
+                            <div className="orderInfo">
+                                <div>
+                                    <span className="orderLabel">Order</span>
+                                    <h3>#{order._id}</h3>
+                                </div>
+                                <div className="orderStatus">Completed</div>
+                            </div>
+                            <div className="orderDetails">
+                                <div className="orderDetail">
+                                    <span>Products</span>
+                                    <strong>{order.products.length}</strong>
+                                </div>
+                                <div className="orderDetail">
+                                    <span>Total</span>
+                                    <strong className="orderPrice">${order.finalPrice}</strong>
+                                </div>
+                            </div>
+                        </article>
+                    ))}
+                </section>
+            )}
+        </main>
     )
 }

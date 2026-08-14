@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import UserCard from "./UserCard.jsx";
 import UserForm from "./UserForm.jsx";
+import "./Users.css";
 
 export default function Users() {
     const [users, setUsers] = useState([])
@@ -78,31 +79,46 @@ export default function Users() {
     }
 
     return (
-        <div>
-            {error && <p>{error}</p>}
-            {editId && (
-                <UserForm
-                    onSave={updateUser}
-                    newUser={newUser}
-                    setNewUser={setNewUser}
-                />
+        <main className="usersPage">
+            {error && (
+                <p className="usersError">{error}</p>
             )}
-            <div>
+            <header className="usersHeader">
+                <div>
+                    <h1>User Management</h1>
+                    <p>Manage registered users and their roles</p>
+                </div>
+                <div className="usersCount">
+                    {users.length} users
+                </div>
+            </header>
+            {editId && (
+                <div className="userFormContainer">
+                    <UserForm
+                        onSave={updateUser}
+                        newUser={newUser}
+                        setNewUser={setNewUser}
+                    />
+                </div>
+            )}
+            <section className="usersSection">
+                <h2>Registered Users</h2>
                 {users.length > 0 ? (
-                    users.map((user) => (
-                        <UserCard
-                            key={user._id}
-                            user={user}
-                            deleteUser={deleteUser}
-                            setEditId={setEditId}
-                            setNewUser={setNewUser}
-                        />
-                    ))
+                    <div className="usersGrid">
+                        {users.map((user) => (
+                            <UserCard
+                                key={user._id}
+                                user={user}
+                                deleteUser={deleteUser}
+                                setEditId={setEditId}
+                                setNewUser={setNewUser}
+                            />
+                        ))}
+                    </div>
                 ) : (
-                    <p>No users found.</p>
-
+                    <p className="usersEmpty">No users found.</p>
                 )}
-            </div>
-        </div>
+            </section>
+        </main>
     )
 }

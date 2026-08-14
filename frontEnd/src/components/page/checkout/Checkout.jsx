@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { clearCart } from "../../../redux/slices/cartSlice";
+import "./Checkout.css"
 
 export default function Checkout() {
     const cart = useSelector(state => state.cart.items)
@@ -31,57 +32,93 @@ export default function Checkout() {
             navigate("/products")
         } catch (error) {
             console.error("Error creating order:", error);
+                console.error("Server response:", error.response?.data);
+
         }
     }
 
-    if (cart.length === 0) {
+     if (cart.length === 0) {
         return (
-            <div>
-                <h2>Your cart is empty</h2>
-                <button
-                    type="button"
-                    onClick={() => navigate("/products")}
-                >Continue Shopping</button>
-            </div>
+            <main className="checkoutPage checkoutEmpty">
+                <div className="checkoutMessage">
+                    <h2>Your cart is empty</h2>
+                    <p>Add some products before proceeding to checkout.</p>
+                    <button
+                        type="button"
+                        onClick={() => navigate("/products")}
+                    >Continue Shopping</button>
+                </div>
+            </main>
         )
     }
 
     if (!currentUser) {
         return (
-            <div>
-                <h2>You must be logged in to checkout</h2>
-                <p>Please log in to complete your purchase.</p>
-                <button
-                    type="button"
-                    onClick={() => navigate("/login", { state: { from: "/checkout" } })}
-                >Log In</button>
-                <button
-                    type="button"
-                    onClick={() => navigate("/cart")}
-                >Back to Cart</button>
-            </div>
+            <main className="checkoutPage checkoutEmpty">
+                <div className="checkoutMessage">
+                    <h2>You must be logged in</h2>
+                    <p>Please log in to complete your purchase.</p>
+                    <button
+                        type="button"
+                        onClick={() =>
+                            navigate("/login", {
+                                state: { from: "/checkout" }
+                            })
+                        }
+                    >Log In</button>
+
+                    <button
+                        type="button"
+                        className="secondaryButton"
+                        onClick={() => navigate("/cart")}
+                    >Back to Cart</button>
+                </div>
+            </main>
         )
     }
 
     return (
-        <div>
-            <h1>Checkout</h1>
-            {cart.map(item => (
-                <div key={item._id}>
-                    <h3>{item.name}</h3>
-                    <p>{item.name} x {item.quantity}</p>
-                    <p>${item.price * item.quantity}</p>
-                </div>
-            ))}
-            <h2>Total: ${total}</h2>
-            <button
-                type="button"
-                onClick={confirmOrder}
-            >Confirm Order</button>
-            <button
-                type="button"
-                onClick={() => navigate("/cart")}
-            >Back to Cart</button>
-        </div>
+        <main className="checkoutPage">
+            <div className="checkoutHeader">
+                <h1>Checkout</h1>
+                <p>Review your order before confirming</p>
+            </div>
+            <div className="checkoutContent">
+                <section className="checkoutProducts">
+                    <h2>Your Order</h2>
+                    {cart.map(item => (
+                        <div
+                            className="checkoutProduct"
+                            key={item._id}
+                        >
+                            <div className="checkoutProductInfo">
+                                <h3>{item.name}</h3>
+                                <p>${item.price} × {item.quantity}</p>
+                            </div>
+                            <strong>
+                                ${item.price * item.quantity}
+                            </strong>
+                        </div>
+                    ))}
+                </section>
+                <aside className="checkoutSummary">
+                    <h2>Order Summary</h2>
+                    <div className="checkoutTotal">
+                        <span>Total</span>
+                        <strong>${total}</strong>
+                    </div>
+                    <button
+                        type="button"
+                        className="confirmButton"
+                        onClick={confirmOrder}
+                    >Confirm Order</button>
+                    <button
+                        type="button"
+                        className="backButton"
+                        onClick={() => navigate("/cart")}
+                    >Back to Cart</button>
+                </aside>
+            </div>
+        </main>
     )
 }

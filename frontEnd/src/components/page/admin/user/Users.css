@@ -1,0 +1,115 @@
+.usersPage {
+    min-height: calc(100vh - 78px);
+    padding: 40px 50px 60px;
+    box-sizing: border-box;
+    background-color: #FFFDF8;
+    font-family: "Poppins", sans-serif;
+}
+
+.usersHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 35px;
+}
+
+.usersHeader h1 {
+    margin: 0;
+    color: #263238;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.usersHeader p {
+    margin: 6px 0 0;
+    color: #7B8588;
+    font-size: 14px;
+}
+
+.usersCount {
+    padding: 9px 16px;
+    border-radius: 20px;
+    background-color: #EAF8FB;
+    color: #397A9B;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.usersError {
+    margin: 0 0 20px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    background-color: #FFF0D2;
+    color: #D96907;
+    font-size: 14px;
+}
+
+.userFormContainer {
+    width: 100%;
+    margin-bottom: 40px;
+    padding: 30px;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    border: 1px solid #EEF1F0;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(38, 50, 56, 0.06);
+}
+
+.usersSection h2 {
+    margin: 0 0 20px;
+    color: #263238;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.usersGrid {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fill, minmax(250px, 1fr));
+
+    gap: 22px;
+}
+
+.usersEmpty {
+    padding: 60px 20px;
+    text-align: center;
+    background-color: #FFFFFF;
+    border: 1px dashed #DDE5E0;
+    border-radius: 16px;
+    color: #7B8588;
+    font-size: 15px;
+}
+
+@media (max-width: 800px) {
+    .usersPage {
+        padding: 30px 25px 45px;
+    }
+    .usersHeader {
+        align-items: flex-start;
+        flex-direction: column;
+
+        gap: 15px;
+    }
+    .usersHeader h1 {
+        font-size: 28px;
+    }
+    .usersGrid {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 550px) {
+    .usersPage {
+        padding: 25px 15px 35px;
+    }
+    .usersHeader h1 {
+        font-size: 24px;
+    }
+    .usersGrid {
+        grid-template-columns: 1fr;
+    }
+    .userFormContainer {
+        padding: 20px 15px;
+    }
+}

@@ -5,11 +5,12 @@ import axios from "axios";
 import { useDispatch } from "react-redux";
 import {loginSuccess, logout} from "../../../redux/slices/userSlice.js"
 import { useNavigate, useLocation } from "react-router-dom";
+import "./Login.css";
 
 export default function Login(){
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
-    const location = useLocation();
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const location = useLocation()
     const [form, setForm] = useState({
         email: "",
         password: ""
@@ -21,7 +22,7 @@ export default function Login(){
     const [message, setMessage] = useState("")
 
     function handleChange(event){
-        const {name, value} = event.target;
+        const {name, value} = event.target
         setForm({
             ...form,
             [name]: value
@@ -30,20 +31,19 @@ export default function Login(){
 
         async function handleSubmit(event){
         event.preventDefault()
-        const newErrors = validateLogin(form);
-        setErrors(newErrors);
+        const newErrors = validateLogin(form)
+        setErrors(newErrors)
 
         const hasErrors =
             newErrors.email !== "" ||
             newErrors.password !== ""
-
         if (hasErrors){
             setMessage("There are errors in the form")
             return
         }   
         try {
             const response = await axios.post("http://localhost:3000/login", form)
-            dispatch(loginSuccess(response.data.user));
+            dispatch(loginSuccess(response.data.user))
             
             if (location.state?.from) {
                 navigate(location.state.from)
@@ -58,9 +58,7 @@ export default function Login(){
                     navigate("/seller")
                 }
             }
-            
             setMessage("Logged correctly")
-            
             setForm({
                 email:"",
                 password:"",
@@ -72,9 +70,9 @@ export default function Login(){
         }catch (error){
             console.error(error)
             if(error.response){
-                setMessage(error.response.data);
+                setMessage(error.response.data.message)
             }else{
-                setMessage("Server connection failed");
+                setMessage("Server connection failed")
             }
 
         }
@@ -105,13 +103,18 @@ export default function Login(){
     ]
 
     return (
-            <>
-                <Form 
+        <main className="authPage">
+            <section className="authCard">
+                <Form
                     formTitle="Login"
                     inputs={inputs}
                     formSubmit={handleSubmit}
+                    className="authForm"
                 />
-                {message && <p>{message}</p>}
-            </>
-        )
+                {message && (
+                    <p className="authMessage">{message}</p>
+                )}
+            </section>
+        </main>
+    )
 }

@@ -1,0 +1,108 @@
+.sellerProductCard {
+    min-height: 290px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    border: 1px solid #EEF1F0;
+    border-radius: 16px;
+    box-shadow: 0 5px 18px rgba(38, 50, 56, 0.05);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.sellerProductCard:hover {
+    transform: translateY(-3px);
+    border-color: #DDE8DF;
+    box-shadow: 0 10px 25px rgba(38, 50, 56, 0.09);
+}
+
+.sellerProductInfo {
+    flex: 1;
+}
+
+.sellerProductCard h3 {
+    margin: 0 0 10px;
+    color: #263238;
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.productDescription {
+    margin: 0 0 15px;
+    color: #6F7A7D;
+    font-size: 13px;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.productPrice {
+    margin: 0 0 18px;
+    color: #D96907;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+.productData {
+    padding-top: 12px;
+    border-top: 1px solid #EEF1F0;
+}
+
+.productData p {
+    display: flex;
+    justify-content: space-between;
+    margin: 7px 0;
+    color: #263238;
+    font-size: 12px;
+}
+
+.productData span {
+    color: #7B8588;
+}
+
+.sellerProductActions {
+    display: flex;
+    gap: 9px;
+    margin-top: 20px;
+}
+
+.sellerProductActions button {
+    flex: 1;
+    height: 38px;
+    border-radius: 9px;
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.editButton {
+    border: 1px solid #4CA338;
+    background-color: transparent;
+    color: #4CA338;
+}
+
+.editButton:hover {
+    background-color: #4CA338;
+    color: #FFFFFF;
+}
+
+.deleteButton {
+    border: 1px solid #D96907;
+    background-color: transparent;
+    color: #D96907;
+}
+
+.deleteButton:hover {
+    background-color: #D96907;
+    color: #FFFFFF;
+}

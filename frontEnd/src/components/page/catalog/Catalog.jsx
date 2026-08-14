@@ -2,13 +2,23 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { ProductCard } from "../../../components/molecules/Index.js";
 import { CategoryFilter } from "../../organisms/index.js";
+import {PetTypeFilter} from "../../organisms/index.js";
 import { Heading } from "../../atoms";
+import { useSearchParams } from "react-router-dom";
 import "./Catalog.css";
 
 export default function Catalog() {
+    const [searchParams] = useSearchParams()
+    const categoryFromUrl = searchParams.get("category")
+    const petTypeFromUrl = searchParams.get("petType")
     const [products, setProducts] = useState([])
     const [categories, setCategories] = useState([])
-    const [selectedCategory, setSelectedCategory] = useState("All")
+    const [selectedCategory, setSelectedCategory] = useState(
+    categoryFromUrl || "All"
+    )
+    const [selectedPetType, setSelectedPetType] = useState(
+        petTypeFromUrl || "All"
+    )
 
     const getProducts = async () => {
         try {
@@ -36,7 +46,14 @@ export default function Catalog() {
             )
         }
     }
+    useEffect(() => {
+        setSelectedCategory(categoryFromUrl || "All")
+    }, [categoryFromUrl])
 
+    useEffect(() => {
+        setSelectedPetType(petTypeFromUrl || "All")
+    }, [petTypeFromUrl])
+    
     useEffect(() => {
         const loadData = async () => {
             try {
@@ -54,13 +71,18 @@ export default function Catalog() {
         loadData()
     }, [])
 
-    const filteredProducts =
-        selectedCategory === "All"
-            ? products
-            : products.filter(
-                product =>
-                    product.category === selectedCategory
-            )
+    const filteredProducts = products.filter((product) => {
+    const matchesCategory =
+        selectedCategory === "All" ||
+        product.category === selectedCategory;
+
+    const matchesPetType =
+    selectedPetType === "All" ||
+    product.petType?.some(
+        type => type.toLowerCase() === selectedPetType.toLowerCase()
+    )
+    return matchesCategory && matchesPetType
+    })
 
     return (
         <main className="catalogPage">
@@ -76,6 +98,10 @@ export default function Catalog() {
                 categories={categories}
                 selectedCategory={selectedCategory}
                 setSelectedCategory={setSelectedCategory}
+            />
+            <PetTypeFilter
+                selectedPetType={selectedPetType}
+                onPetTypeChange={setSelectedPetType}
             />
 
             <div className="catalog">

@@ -35,10 +35,10 @@ export default function validateRegister(form){
         ? "At least 8 characters, one uppercase letter, one lowercase letter, one number, and one special character is required" 
         : "",
     repeatPassword:
-        form.password.length === 0 
-        ? "This input must contain something" 
+    form.repeatPassword.length === 0
+        ? "This input must contain something"
         : form.repeatPassword !== form.password
-        ? "Passwords do not match" 
+        ? "Passwords do not match"
         : "",
     phoneNumber:
         form.phoneNumber.length === 0 

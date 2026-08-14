@@ -1,0 +1,138 @@
+.authPage {
+    min-height: calc(100vh - 80px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 20px;
+    background: #f7f9f7;
+    box-sizing: border-box;
+}
+
+.authCard {
+    width: 100%;
+    max-width: 480px;
+    padding: 40px;
+    background: #ffffff;
+    border-radius: 18px;
+    border-top: 5px solid #4CA338;
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.08);
+    box-sizing: border-box;
+}
+
+.authForm {
+    width: 100%;
+}
+
+.authForm h2 {
+    margin: 0 0 30px;
+    text-align: center;
+    color: #D96907;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+.authForm .inputGroup {
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+.authForm .inputGroup label {
+    display: block;
+    margin-bottom: 7px;
+    color: #34443a;
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.authForm .inputGroup input {
+    width: 100%;
+    padding: 12px 14px;
+    box-sizing: border-box;
+    border: 1px solid #d7ddd8;
+    border-radius: 10px;
+    background: #fbfcfb;
+    color: #2f3731;
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.authForm .inputGroup input:focus {
+    border-color: #4CA338;
+    background: #ffffff;
+    box-shadow:
+        0 0 0 3px rgba(76, 163, 56, 0.12);
+}
+
+.authForm .inputGroup input::placeholder {
+    color: #9aa39c;
+}
+
+.authForm .inputError {
+    margin: 6px 0 0;
+    color: #c94b32;
+    font-size: 0.78rem;
+    line-height: 1.35;
+}
+
+.authForm > button {
+    width: 100%;
+    padding: 13px 18px;
+    margin-top: 8px;
+    border: none;
+    border-radius: 10px;
+    background: #F2A516;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.authForm > button:hover {
+    background: #D96907;
+    transform: translateY(-1px);
+    box-shadow:
+        0 5px 12px rgba(217, 105, 7, 0.20);
+}
+
+.authForm > button:active {
+    transform: translateY(0);
+}
+
+.authMessage {
+    margin: 20px 0 0;
+    padding: 12px 15px;
+    border-radius: 10px;
+    background: #eaf6ff;
+    color: #28769d;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 600px) {
+    .authPage {
+        align-items: flex-start;
+        padding: 30px 15px;
+    }
+    .authCard {
+        padding: 30px 22px;
+        margin-top: 20px;
+        border-radius: 15px;
+    }
+    .authForm h2 {
+        font-size: 1.7rem;
+    }
+    .authForm .inputError {
+        font-size: 0.75rem;
+    }
+}

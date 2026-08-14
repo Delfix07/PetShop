@@ -160,13 +160,18 @@ export default function Register (){
         }
     ]
     return (
-        <>
-            <Form 
-                formTitle="Create account"
-                inputs={inputs}
-                formSubmit={handleSubmit}
-            />
-            {message && <p>{message}</p>}
-        </>
+        <main className="authPage">
+            <section className="authCard">
+                <Form
+                    formTitle="Create account"
+                    inputs={inputs}
+                    formSubmit={handleSubmit}
+                    className="authForm"
+                />
+                {message && (
+                    <p className="authMessage">{message}</p>
+                )}
+            </section>
+        </main>
     )
 }

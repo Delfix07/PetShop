@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import axios from "axios";
-
-import ProductCard from "../admin/products/ProductCard.jsx";
+import SellerProductCard from "../admin/products/SellerProductcard.jsx";
 import ProductForm from "../admin/products/ProductForm.jsx";
+import "./SellerProducts.css";
 
 export default function Products() {
     const currentUser = useSelector(
@@ -118,39 +118,53 @@ export default function Products() {
     }
 
     return (
-        <div>
-            {error && <p>{error}</p>}
+    <main className="sellerPage">
+            {error && (<p className="sellerError">{error}</p>)}
+            <header className="sellerHeader">
+            <div>
+                <h1>Seller Dashboard</h1>
+                <p>Manage your products</p>
+            </div>
             <button
+                className="addProductButton"
                 type="button"
                 onClick={() => {
                 resetForm()
-                setShowForm(true)
+                setShowForm(true) 
             }}
             >Add Product</button>
-            {showForm && (
-                <ProductForm
-                    onSave={saveProduct}
-                    newProduct={newProduct}
-                    setNewProduct={setNewProduct}
-                    editId={editId}
-                    onCancel={() => setShowForm(false)}
-                />
-             )}
-            <div>
-                {products.length > 0 ? (
-                    products.map((product) => (
-                        <ProductCard
-                            key={product._id}
-                            product={product}
-                            deleteProduct={deleteProduct}
-                            setEditId={setEditId}
+            </header>
+                {showForm && (
+                    <div className="sellerFormContainer">
+                        <ProductForm
+                            onSave={saveProduct}
+                            newProduct={newProduct}
                             setNewProduct={setNewProduct}
+                            editId={editId}
+                            onCancel={() => setShowForm(false)}
                         />
-                    ))
-                ) : (
-                    <p>No products found.</p>
+                    </div>
                 )}
-            </div>
-        </div>
+            <section className="sellerProducts">
+                <h2 className="sellerProductsTitle">Your Products</h2>
+                {products.length > 0 ? (
+                    <div className="sellerProductsGrid">
+                        {products
+                            .filter((product) => product)
+                            .map((product) => (
+                                <SellerProductCard
+                                    key={product._id}
+                                    product={product}
+                                    deleteProduct={deleteProduct}
+                                    setEditId={setEditId}
+                                    setNewProduct={setNewProduct}
+                                />
+                            ))}
+                    </div>
+                ) : (
+                    <p className="sellerEmpty">No products found.</p>
+                )}
+            </section>
+    </main>
     )
 }

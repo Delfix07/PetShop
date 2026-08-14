@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { FaSearch } from "react-icons/fa";
 import "./SearchBar.css"
 
-
 export default function SearchBar({onSearch}){
     const [search, setSearch] = useState("");
     useEffect(() => {

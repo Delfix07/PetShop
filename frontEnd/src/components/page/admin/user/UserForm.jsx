@@ -1,3 +1,5 @@
+import "./UserForm.css"
+
 export default function UserForm({
     onSave,
     newUser,
@@ -17,7 +19,7 @@ export default function UserForm({
     }
 
     return (
-        <form onSubmit={onSubmit}>
+        <form className="userForm" onSubmit={onSubmit}>
             <h2>Edit User</h2>
             <label htmlFor="name">Name</label>
             <input

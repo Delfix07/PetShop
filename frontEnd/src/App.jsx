@@ -38,3 +38,9 @@ function App(){
     )
 }
 export default App
+
+//Profe, el apartado de Profile no llegue a hacerlo y tengo entendido que no era obligatorio. 
+//Figura en el sitio pero no lleva a ningun lado...queria avisar que no se trataba de un error.
+//En el proceso de este sitio web, me di cuenta que hay mucho que debo seguir indagando y aprendiendo. 
+//Muchas gracias por todo y espero que le guste mi app.
+//EN EL README ESTAN LAS CREDENCIALES PARA SELLER Y ADMIN!!!    

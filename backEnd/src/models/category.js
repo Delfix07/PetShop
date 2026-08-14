@@ -12,4 +12,4 @@ const Category = mongoose.model("Category", categorySchema)
 
 export default Category;
 
-//Cat, dog, fish
+//Accesories, Feeders, Toys...  

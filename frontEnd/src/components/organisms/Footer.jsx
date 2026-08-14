@@ -1,10 +1,15 @@
 import { Paragraph } from "../atoms/Index.js";
+import logo from "../../assets/logo.png";
+import "./Footer.css";
 
-export default function footer(imgSource, copyright){
+export default function Footer({ imgSource, copyright }) {
     return (
-        <section>
-            <img src={imgSource} alt=""/>
-            <Paragraph text={copyright}/>
-        </section>
+        <footer className="footer">
+            <img src={logo} alt="PetShop" className="footerLogo" />
+            <Paragraph
+                text="© 2026 PetShop. All rights reserved."
+                className="footerCopyright"
+            />
+        </footer>
     )
 }

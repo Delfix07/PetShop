@@ -20,9 +20,7 @@ export default function ProductDetails (){
         );
         setProduct(response.data)
     } catch(error) {
-
         console.error(error)
-
     }
 }
     useEffect(() => {
@@ -31,20 +29,36 @@ export default function ProductDetails (){
 
     if (!product) {
         return <p>Loading...</p>;}
+    console.log(product.image);
 
     return (
-        <div className="productDetail">
+    <div className="productDetail">
+        <div className="productDetailImage">
             <ProductCarousel
                 images={product.image}
                 productName={product.name}
             />
-            <Heading size="h1" text={product.name} />
-            <Paragraph text={product.description} />
-            <Heading size="h2" text={`$${product.price}`} />
-            <p>Brand: {product.brand}</p>
-            <p>Category: {product.category}</p>
-            <p>Stock: {product.stock}</p>
-            <button onClick={() => dispatch(addToCart(product))} disabled={product.stock === 0}>Add to cart</button>
         </div>
+        <div className="productDetailInfo">
+            <Heading
+                size="h1"
+                text={product.name}
+            />
+            <Paragraph text={product.description}/>
+            <Heading
+                size="h2"
+                text={`$${product.price}`}
+            />
+            <div className="productData">
+                <p><strong>Brand:</strong> {product.brand}</p>
+                <p><strong>Category:</strong> {product.category}</p>
+                <p><strong>Stock:</strong> {product.stock}</p>
+            </div>
+            <button
+                onClick={() => dispatch(addToCart(product))}
+                disabled={product.stock === 0}
+            >Add to cart</button>
+        </div>
+    </div>
     )
 } 

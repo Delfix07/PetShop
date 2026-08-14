@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import ProductCard from "./ProductCard.jsx";
+import SellerProductCard from "./SellerProductcard.jsx";
 import ProductForm from "./ProductForm.jsx";
 
 export default function Products() {
@@ -103,7 +103,7 @@ export default function Products() {
             <div>
                 {products.length > 0 ? (
                     products.map((product) => (
-                        <ProductCard
+                        <SellerProductCard
                             key={product._id}
                             product={product}
                             deleteProduct={deleteProduct}

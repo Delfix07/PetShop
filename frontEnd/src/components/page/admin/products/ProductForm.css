@@ -1,0 +1,156 @@
+.productForm {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 22px;
+    font-family: "Poppins", sans-serif;
+}
+
+.productForm h2 {
+    grid-column: 1 / -1;
+    margin: 0 0 8px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #EEF1F0;
+    color: #263238;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.productForm label {
+    display: block;
+    margin-bottom: 6px;
+    color: #263238;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.productForm input,
+.productForm textarea,
+.productForm select {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid #DDE5E0;
+    border-radius: 9px;
+    background-color: #FFFDF8;
+    color: #263238;
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    outline: none;
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.productForm input,
+.productForm select {
+    height: 42px;
+    padding: 0 12px;
+}
+
+.productForm textarea {
+    min-height: 100px;
+    padding: 11px 12px;
+    resize: vertical;
+}
+
+.productForm input:focus,
+.productForm textarea:focus,
+.productForm select:focus {
+    border-color: #5BBFD6;
+    box-shadow:
+        0 0 0 3px rgba(91, 191, 214, 0.15);
+}
+
+.productForm select[multiple] {
+    height: 110px;
+    padding: 8px;
+}
+
+.productForm select[multiple] option {
+    padding: 6px;
+    border-radius: 5px;
+}
+
+.productForm > div {
+    grid-column: 1 / -1;
+}
+
+.productForm > div input {
+    margin-bottom: 8px;
+}
+
+.productForm button {
+    min-height: 40px;
+    padding: 0 16px;
+    border-radius: 9px;
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.productForm button[type="button"] {
+    border: 1px solid #5BBFD6;
+    background-color: transparent;
+    color: #397A9B;
+}
+
+.productForm button[type="button"]:hover {
+    background-color: #EAF8FB;
+    transform: translateY(-1px);
+}
+
+.productForm button[type="submit"] {
+    border: none;
+    background-color: #F2A516;
+    color: #263238;
+}
+
+.productForm button[type="submit"]:hover {
+    background-color: #D96907;
+    color: #FFFFFF;
+    transform: translateY(-1px);
+}
+
+.productForm button:last-child {
+    border: 1px solid #DDE5E0;
+    background-color: #EEF1F0;
+    color: #263238;
+}
+
+.productForm button:last-child:hover {
+    background-color: #DDE5E0;
+}
+
+.productInputGroup {
+    margin-bottom: 18px;
+}
+
+.productInputGroup .inputError {
+    margin: 6px 0 0;
+    color: #D96907;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+.productInputGroup input:has(+ .inputError),
+.productInputGroup textarea:has(+ .inputError),
+.productInputGroup select:has(+ .inputError) {
+    border-color: #D96907;
+}
+
+@media (max-width: 700px) {
+    .productForm {
+        grid-template-columns: 1fr;
+    }
+    .productForm h2 {
+        grid-column: 1;
+    }
+    .productForm > div {
+        grid-column: 1;
+    }
+}

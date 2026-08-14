@@ -1,20 +1,159 @@
+.catalogPage {
+    width: min(1200px, 92%);
+    margin: 0 auto;
+    padding: 40px 0 60px;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
 .catalogHeader {
     margin-bottom: 25px;
 }
+
 .catalogHeader h1 {
     margin: 0 0 6px;
-
     color: #263238;
-
     font-family: "Poppins", sans-serif;
     font-size: 32px;
     font-weight: 700;
 }
+
 .catalogHeader p {
     margin: 0;
-
     color: #7B8588;
-
     font-family: "Poppins", sans-serif;
     font-size: 14px;
+}
+
+.catalog {
+    display: grid;
+    grid-template-columns:
+        repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+    align-items: stretch;
+}
+
+.catalog article {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    padding: 18px;
+    background-color: #FFFFFF;
+    border: 1px solid #EEF1F0;
+    border-radius: 16px;
+    box-shadow:
+        0 5px 18px rgba(38, 50, 56, 0.05);
+    display: flex;
+    flex-direction: column;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.catalog article:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 10px 25px rgba(38, 50, 56, 0.09);
+}
+
+.catalog article img {
+    width: 100%;
+    height: 190px;
+    object-fit: contain;
+    margin-bottom: 15px;
+    background-color: #FFFDF8;
+    border-radius: 12px;
+}
+
+.catalog article h4 {
+    margin: 0 0 8px;
+    color: #263238;
+    font-family: "Poppins", sans-serif;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.catalog article p {
+    margin: 0 0 12px;
+    color: #667276;
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp:3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.catalog article h6 {
+    margin: auto 0 12px;
+    color: #D96907;
+    font-family: "Poppins", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.catalog article a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    min-height: 40px;
+    box-sizing: border-box;
+    border-radius: 9px;
+    background-color: #F2A516;
+    color: #263238;
+    text-decoration: none;
+    font-family: "Poppins", sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    transition:
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.catalog article a:hover {
+    background-color: #D96907;
+    color: #FFFFFF;
+    transform: translateY(-1px);
+}
+
+@media (max-width: 800px) {
+    .catalogPage {
+        width: 90%;
+        padding: 30px 0 45px;
+    }
+    .catalogHeader h1 {
+        font-size: 28px;
+    }
+    .catalog {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+        gap: 18px;
+    }
+    .catalog article img {
+        height: 170px;
+    }
+}
+
+
+@media (max-width: 550px) {
+    .catalogPage {
+        width: 94%;
+        padding: 25px 0 35px;
+    }
+    .catalogHeader h1 {
+        font-size: 24px;
+    }
+    .catalog {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        margin-top: 20px;
+    }
+    .catalog article img {
+        height: 210px;
+    }
 }

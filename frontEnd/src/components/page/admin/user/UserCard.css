@@ -1,0 +1,125 @@
+.userCard {
+    display: flex;
+    flex-direction: column;
+    min-height: 200px;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: #FFFFFF;
+    border: 1px solid #EEF1F0;
+    border-radius: 16px;
+    box-shadow: 0 5px 18px rgba(38, 50, 56, 0.05);
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.userCard:hover {
+    transform: translateY(-3px);
+    border-color: #DDE8DF;
+    box-shadow: 0 10px 25px rgba(38, 50, 56, 0.09);
+}
+
+.userCardInfo {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.userAvatar {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background-color: #EAF8FB;
+    color: #397A9B;
+    font-size: 17px;
+    font-weight: 700;
+}
+
+.userCard h3 {
+    margin: 0 0 4px;
+    color: #263238;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.userEmail {
+    margin: 0;
+    color: #7B8588;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.userRole {
+    margin-top: 20px;
+}
+
+.userRole span {
+    display: inline-block;
+    padding: 5px 11px;
+    border-radius: 15px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.role-user {
+    background-color: #EAF8FB;
+    color: #397A9B;
+}
+
+.role-seller {
+    background-color: #E8F4E5;
+    color: #4CA338;
+}
+
+.role-admin {
+    background-color: #FFF0D2;
+    color: #D96907;
+}
+
+.userActions {
+    display: flex;
+    gap: 9px;
+    margin-top: auto;
+    padding-top: 20px;
+}
+
+.userActions button {
+    flex: 1;
+    height: 37px;
+    border-radius: 9px;
+    font-family: "Poppins", sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.userEditButton {
+    border: 1px solid #4CA338;
+    background-color: transparent;
+    color: #4CA338;
+}
+
+.userEditButton:hover {
+    background-color: #4CA338;
+    color: #FFFFFF;
+}
+
+.userDeleteButton {
+    border: 1px solid #D96907;
+    background-color: transparent;
+    color: #D96907;
+}
+.userDeleteButton:hover {
+    background-color: #D96907;
+    color: #FFFFFF;
+}
