@@ -1,7 +1,7 @@
 import { useDispatch } from "react-redux";
 import { removeFromCart, increaseQuantity, decreaseQuantity } from "../../redux/slices/cartSlice";
-
 import { Heading , Paragraph} from "../atoms/Index";
+import "./CartItem.css";
 
 export default function CartItem({item}){
     const dispatch = useDispatch()
